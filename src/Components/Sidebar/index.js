@@ -1,7 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import CreateIcon from "@mui/icons-material/Create";
+import SidebarOption from "./SidebarOption";
+import {
+  Add,
+  Apps,
+  BookmarkBorder,
+  Create,
+  Drafts,
+  ExpandLess,
+  ExpandMore,
+  FiberManualRecord,
+  FileCopy,
+  Inbox,
+  InsertComment,
+  PeopleAlt,
+} from "@mui/icons-material";
 
 export default function SideBar() {
   return (
@@ -10,12 +23,26 @@ export default function SideBar() {
         <SidebarInfo>
           <h2>iprissm HQ</h2>
           <h3>
-            <FiberManualRecordIcon />
+            <FiberManualRecord />
             Desmond Inc
           </h3>
         </SidebarInfo>
-        <CreateIcon />
+        <Create />
       </SidebarHeader>
+
+      <SidebarOption Icon={InsertComment} title="Threads" />
+      <SidebarOption Icon={Inbox} title="Mentions & reactions" />
+      <SidebarOption Icon={Drafts} title="Saved Items" />
+      <SidebarOption Icon={BookmarkBorder} title="Channel browser" />
+      <SidebarOption Icon={PeopleAlt} title="People & user groups" />
+      <SidebarOption Icon={Apps} title="Apps" />
+      <SidebarOption Icon={FileCopy} title="File browser" />
+      <SidebarOption Icon={ExpandLess} title="Show less" />
+
+      <hr />
+
+      <SidebarOption Icon={ExpandMore} title="Channels" />
+      <SidebarOption Icon={Add} addChannelOption title="Add Channel" />
     </SidebarContainer>
   );
 }
