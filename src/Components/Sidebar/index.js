@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import SidebarOption from "./SidebarOption";
 import {
@@ -15,8 +15,20 @@ import {
   InsertComment,
   PeopleAlt,
 } from "@mui/icons-material";
+import getAllDocuments from "Backend/getAllDocuments";
 
 export default function SideBar() {
+  const [rooms, setRooms] = useState(null);
+
+  useEffect(() => {
+    getRooms();
+  }, []);
+
+  const getRooms = async () => {
+    await getAllDocuments("rooms", setRooms);
+    console.log("Rooms: ", rooms);
+  };
+
   return (
     <SidebarContainer>
       <SidebarHeader>
@@ -43,6 +55,10 @@ export default function SideBar() {
 
       <SidebarOption Icon={ExpandMore} title="Channels" />
       <SidebarOption Icon={Add} addChannelOption title="Add Channel" />
+
+      {rooms?.map(room => (
+        <SidebarOption key={room.id} id={room.id} title={room.name} />
+      ))}
     </SidebarContainer>
   );
 }
@@ -54,6 +70,10 @@ const SidebarContainer = styled.div`
   border-top: 1px solid #49274b;
   max-width: 260px;
   margin-top: 60px;
+  > hr {
+    margin: 10px 0 10px 0;
+    border: 1px solid #49274b;
+  }
 `;
 
 const SidebarHeader = styled.div`
