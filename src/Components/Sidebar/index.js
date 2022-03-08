@@ -25,7 +25,10 @@ export default function SideBar() {
   }, []);
 
   const getRooms = async () => {
-    await getAllDocuments("rooms", setRooms);
+    await getAllDocuments("rooms", setRooms, {
+      name: "timestamp",
+      value: "desc",
+    });
     console.log("Rooms: ", rooms);
   };
 
@@ -54,10 +57,16 @@ export default function SideBar() {
       <hr />
 
       <SidebarOption Icon={ExpandMore} title="Channels" />
+      <hr />
       <SidebarOption Icon={Add} addChannelOption title="Add Channel" />
 
       {rooms?.map(room => (
-        <SidebarOption key={room.id} id={room.id} title={room.name} />
+        <SidebarOption
+          key={room.id}
+          Icon={FiberManualRecord}
+          id={room.id}
+          title={room.name}
+        />
       ))}
     </SidebarContainer>
   );
@@ -70,6 +79,7 @@ const SidebarContainer = styled.div`
   border-top: 1px solid #49274b;
   max-width: 260px;
   margin-top: 60px;
+
   > hr {
     margin: 10px 0 10px 0;
     border: 1px solid #49274b;

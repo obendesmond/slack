@@ -3,8 +3,8 @@ import { db } from "Backend/firebase";
 
 const getAllDocuments = (collectionName, setItems, orderOptions) => {
   const q = query(
-    collection(db, collectionName)
-    // orderBy(orderOptions.name, orderOptions.value)
+    collection(db, collectionName),
+    orderBy(orderOptions.name, orderOptions.value) //e.g orderBy("name","asc")
   );
 
   const unsub = onSnapshot(q, querySnapshot => {
