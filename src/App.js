@@ -1,3 +1,4 @@
+import Chat from "Components/Chat";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import styled from "styled-components";
@@ -9,12 +10,12 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <AppBody>
+      <ApBody>
         <Sidebar />
         <Routes>
-          <Route path="/" exact></Route>
+          <Route path="/" exact element={<Chat />} />
         </Routes>
-      </AppBody>
+      </ApBody>
     </div>
   );
 }

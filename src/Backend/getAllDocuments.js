@@ -13,7 +13,7 @@ const getAllDocuments = (collectionName, setItems, orderOptions) => {
       postArray.push({ ...doc.data(), id: doc.id });
     });
     setItems(postArray);
-    console.log("Array: ", postArray);
+    // console.log("Array: ", postArray);
   });
 
   return () => unsub();
