@@ -2,12 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { db } from "Backend/firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { useDispatch } from "react-redux";
+import { enterRoom } from "features/appSlice";
 
 export default function SidebarOption({ Icon, title, addChannelOption, id }) {
+  const dispatch = useDispatch();
   const roomName = "rooms";
 
   const addChannel = async () => {
     const channelName = prompt("Please enter the channel name");
+
     if (channelName) {
       await addDoc(collection(db, roomName), {
         name: channelName,
@@ -16,7 +20,12 @@ export default function SidebarOption({ Icon, title, addChannelOption, id }) {
     }
   };
 
-  const selectChannel = () => {};
+  const selectChannel = () => {
+    console.log(id);
+    if (id) {
+      dispatch(enterRoom({ roomId: id }));
+    }
+  };
 
   return (
     <SidebarOptionContainer

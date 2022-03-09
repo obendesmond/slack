@@ -29,7 +29,6 @@ export default function SideBar() {
       name: "timestamp",
       value: "desc",
     });
-    console.log("Rooms: ", rooms);
   };
 
   return (
