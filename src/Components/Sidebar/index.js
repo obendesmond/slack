@@ -48,9 +48,6 @@ export default function SideBar() {
 
       <SidebarOption Icon={InsertComment} title="Threads" />
       <SidebarOption Icon={Inbox} title="Mentions & reactions" />
-      <SidebarOption Icon={Drafts} title="Saved Items" />
-      <SidebarOption Icon={BookmarkBorder} title="Channel browser" />
-      <SidebarOption Icon={PeopleAlt} title="People & user groups" />
       <SidebarOption Icon={Apps} title="Apps" />
       <SidebarOption Icon={FileCopy} title="File browser" />
       <SidebarOption Icon={ExpandLess} title="Show less" />

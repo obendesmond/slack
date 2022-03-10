@@ -1,0 +1,55 @@
+[debug] [2022-03-10T11:29:52.958Z] ----------------------------------------------------------------------
+[debug] [2022-03-10T11:29:52.962Z] Command:       /usr/bin/node /usr/bin/firebase deploy
+[debug] [2022-03-10T11:29:52.963Z] CLI Version:   10.2.0
+[debug] [2022-03-10T11:29:52.963Z] Platform:      linux
+[debug] [2022-03-10T11:29:52.964Z] Node Version:  v16.13.2
+[debug] [2022-03-10T11:29:52.964Z] Time:          Thu Mar 10 2022 12:29:52 GMT+0100 (West Africa Standard Time)
+[debug] [2022-03-10T11:29:52.964Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-03-10T11:29:53.076Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-03-10T11:29:53.077Z] > authorizing via signed-in user (obendesmond2@gmail.com)
+[debug] [2022-03-10T11:29:53.077Z] [iam] checking project slack-ca739 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-03-10T11:29:53.079Z] > refreshing access token with scopes: []
+[debug] [2022-03-10T11:29:53.080Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-03-10T11:29:54.445Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","date":"Thu, 10 Mar 2022 11:29:54 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-03-10T11:29:54.544Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/slack-ca739:testIamPermissions [none]
+[debug] [2022-03-10T11:29:54.545Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/slack-ca739:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-03-10T11:29:55.819Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/slack-ca739:testIamPermissions 200
+[debug] [2022-03-10T11:29:55.819Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/slack-ca739:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-03-10T11:29:55.821Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/slack-ca739 [none]
+[debug] [2022-03-10T11:29:57.448Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/slack-ca739 200
+[debug] [2022-03-10T11:29:57.449Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/slack-ca739 {"projectId":"slack-ca739","projectNumber":"461548883831","displayName":"slacktwo","name":"projects/slack-ca739","resources":{"hostingSite":"slack-ca739","storageBucket":"slack-ca739.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'slack-ca739'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2022-03-10T11:29:57.455Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2022-03-10T11:29:57.456Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-03-10T11:29:58.386Z] <<< HTTP RESPONSE 200 {"date":"Thu, 10 Mar 2022 11:29:58 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-03-10T11:29:58.514Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/slack-ca739/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-03-10T11:30:00.156Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 10 Mar 2022 11:30:00 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[slack-ca739]: beginning deploy... 
+[info] i  hosting[slack-ca739]: found 12 files in build 
+[debug] [2022-03-10T11:30:00.894Z] > refreshing access token with scopes: []
+[debug] [2022-03-10T11:30:00.894Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-03-10T11:30:00.898Z] [hosting] hash cache [YnVpbGQ] stored for 12 files
+[debug] [2022-03-10T11:30:00.899Z] [hosting][hash queue][FINAL] {"max":713,"min":18,"avg":80.83333333333333,"active":0,"complete":12,"success":12,"errored":0,"retried":0,"total":12,"elapsed":726}
+[debug] [2022-03-10T11:30:01.621Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Thu, 10 Mar 2022 11:30:01 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-03-10T11:30:01.719Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/sites/slack-ca739/versions/480aedefecb93952:populateFiles [none]
+[debug] [2022-03-10T11:30:01.720Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/slack-ca739/versions/480aedefecb93952:populateFiles {"files":{"/asset-manifest.json":"dbb61b8cbe8b13325a1e75b6d263a640e31d47708d45bf0a7fe156ae541619d2","/favicon.ico":"a4435238a463000b85d9dcb2dd8c8293043f96bca96b202741aeec5c3f5c132b","/index.html":"360813dc8db128089706032b0a84ae7d0b460e62eb6fd2ce3d66c41d04f796ef","/logo192.png":"1140ecb66280bd3a5e610227d0eb19bd92b73d632c740362dd20bdd5f175671a","/manifest.json":"0958a5e0c831126100c8c2d06a6bbaa665a3900f21aaff4130238a6f5a113aa1","/robots.txt":"9486af852ce71d8ddbb9bc5bd6f7a3e45740f8c66ee724d1ae2bcc4dd7d3ded0","/static/css/main.82d6eb10.css":"d3f06a503c5cde0922c44a1ac86bf6504ab5a2c43cc56fc7aa4b0331ca01686d","/static/js/main.49385d28.js.LICENSE.txt":"439458b2d478f84764013e68726c33ee714153e07d6bfc79d6c7d6e7206fd34d","/static/css/main.82d6eb10.css.map":"2db4b8fe634ffaa756f917da6ab1fcbfa269c85b3d27e298c6ee4e8d6d1d7aa2","/logo512.png":"fd3e4d8841a56bbbcfbb2186741bab5fb4083fbfbb6480bb70581a8d5b9a1c98","/static/js/main.49385d28.js":"72dda9aedce8d32b6d755abdabfb9ebed954eca988aae9a7c4e1438148363cd6","/static/js/main.49385d28.js.map":"e3448120e2d209a43f6958ba4bb083d8d4499f998f418a49c58383ec6a48e869"}}
+[debug] [2022-03-10T11:30:03.516Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/sites/slack-ca739/versions/480aedefecb93952:populateFiles 200
+[debug] [2022-03-10T11:30:03.516Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/slack-ca739/versions/480aedefecb93952:populateFiles {"uploadRequiredHashes":["e3448120e2d209a43f6958ba4bb083d8d4499f998f418a49c58383ec6a48e869","72dda9aedce8d32b6d755abdabfb9ebed954eca988aae9a7c4e1438148363cd6","dbb61b8cbe8b13325a1e75b6d263a640e31d47708d45bf0a7fe156ae541619d2","360813dc8db128089706032b0a84ae7d0b460e62eb6fd2ce3d66c41d04f796ef"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/slack-ca739/versions/480aedefecb93952/files"}
+[debug] [2022-03-10T11:30:03.521Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/slack-ca739/versions/480aedefecb93952/files/e3448120e2d209a43f6958ba4bb083d8d4499f998f418a49c58383ec6a48e869 [none]
+[debug] [2022-03-10T11:30:03.521Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/slack-ca739/versions/480aedefecb93952/files/e3448120e2d209a43f6958ba4bb083d8d4499f998f418a49c58383ec6a48e869 [stream]
+[debug] [2022-03-10T11:30:03.524Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/slack-ca739/versions/480aedefecb93952/files/72dda9aedce8d32b6d755abdabfb9ebed954eca988aae9a7c4e1438148363cd6 [none]
+[debug] [2022-03-10T11:30:03.524Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/slack-ca739/versions/480aedefecb93952/files/72dda9aedce8d32b6d755abdabfb9ebed954eca988aae9a7c4e1438148363cd6 [stream]
+[debug] [2022-03-10T11:30:03.525Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/slack-ca739/versions/480aedefecb93952/files/dbb61b8cbe8b13325a1e75b6d263a640e31d47708d45bf0a7fe156ae541619d2 [none]
+[debug] [2022-03-10T11:30:03.525Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/slack-ca739/versions/480aedefecb93952/files/dbb61b8cbe8b13325a1e75b6d263a640e31d47708d45bf0a7fe156ae541619d2 [stream]
+[debug] [2022-03-10T11:30:03.527Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/slack-ca739/versions/480aedefecb93952/files/360813dc8db128089706032b0a84ae7d0b460e62eb6fd2ce3d66c41d04f796ef [none]
+[debug] [2022-03-10T11:30:03.527Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/slack-ca739/versions/480aedefecb93952/files/360813dc8db128089706032b0a84ae7d0b460e62eb6fd2ce3d66c41d04f796ef [stream]
+[debug] [2022-03-10T11:30:03.528Z] [hosting][populate queue][FINAL] {"max":2627,"min":2627,"avg":2627,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":2635}
+[debug] [2022-03-10T11:30:03.529Z] [hosting] uploads queued: 4

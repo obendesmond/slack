@@ -12,7 +12,7 @@ function ChatInput({ channelId, channelName, chatRef }) {
   const sendMessage = async e => {
     e.preventDefault();
 
-    if (!channelId) return false;
+    if (!channelId || !input) return false;
 
     const docRef = doc(db, "rooms", channelId);
 

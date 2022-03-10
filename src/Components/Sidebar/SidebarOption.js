@@ -30,7 +30,7 @@ export default function SidebarOption({ Icon, title, addChannelOption, id }) {
     <SidebarOptionContainer
       onClick={addChannelOption ? addChannel : selectChannel}
     >
-      {Icon && <Icon fontSize="sm" style={{ padding: 10 }} />}
+      {Icon && <Icon style={{ padding: 10 }} />}
       {Icon ? (
         <h3>{title}</h3>
       ) : (
