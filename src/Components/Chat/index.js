@@ -31,7 +31,7 @@ function Chat() {
 
   return (
     <ChatContainer>
-      {roomDetails && (
+      {roomDetails && roomMessages && (
         <>
           {/* chat header */}
           <Header>
@@ -72,7 +72,11 @@ function Chat() {
 
       {!roomDetails && (
         <NoRoomSelected>
-          <h2>Please Select a Room</h2>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Slack_icon_2019.svg/2048px-Slack_icon_2019.svg.png"
+            alt="slack logo"
+          />
+          <h2>Please select a Channel or add a Channel</h2>
         </NoRoomSelected>
       )}
     </ChatContainer>
@@ -128,8 +132,14 @@ const ChatMessages = styled.div``;
 const NoRoomSelected = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   height: 100%;
+  > img {
+    height: 100px;
+    padding: 20px;
+    margin-bottom: 40px;
+  }
 `;
 
 const ChatBottom = styled.div`

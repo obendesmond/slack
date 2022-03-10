@@ -1,25 +1,34 @@
 import React from "react";
-import { Avatar } from "@mui/material";
+import { Avatar, Tooltip } from "@mui/material";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import SearchIcon from "@mui/icons-material/Search";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import styled from "styled-components";
+import useAuth from "hooks/useAuth";
+import { signOut } from "firebase/auth";
+import { auth } from "Backend/firebase";
 
 export const Header = () => {
+  const { currentUser } = useAuth();
   return (
     <HeaderContainer>
       {/* header left */}
       <HeaderLeft>
-        <HeaderAvatar
-        // TODO: Add onclick
-        />
+        <Tooltip title="Sign Out" arrow>
+          <HeaderAvatar
+            // TODO: Add onclick
+            onClick={() => signOut(auth)}
+            src={currentUser?.photoURL}
+            alt={currentUser?.displayName}
+          />
+        </Tooltip>
         <AccessTimeIcon />
       </HeaderLeft>
 
       {/* header search (middle) */}
       <HeaderSearch>
         <SearchIcon />
-        <input placeholder="search the slack farm" />
+        <input placeholder="search the desmond slack" />
       </HeaderSearch>
 
       {/* header right */}

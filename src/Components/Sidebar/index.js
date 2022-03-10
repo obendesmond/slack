@@ -16,9 +16,11 @@ import {
   PeopleAlt,
 } from "@mui/icons-material";
 import getAllDocuments from "Backend/getAllDocuments";
+import useAuth from "hooks/useAuth";
 
 export default function SideBar() {
   const [rooms, setRooms] = useState(null);
+  const { currentUser } = useAuth();
 
   useEffect(() => {
     getRooms();
@@ -38,7 +40,7 @@ export default function SideBar() {
           <h2>iprissm HQ</h2>
           <h3>
             <FiberManualRecord />
-            Desmond Inc
+            {currentUser?.displayName}
           </h3>
         </SidebarInfo>
         <Create />
@@ -59,14 +61,16 @@ export default function SideBar() {
       <hr />
       <SidebarOption Icon={Add} addChannelOption title="Add Channel" />
 
-      {rooms?.map(room => (
-        <SidebarOption
-          key={room.id}
-          Icon={FiberManualRecord}
-          id={room.id}
-          title={room.name}
-        />
-      ))}
+      <SidebarOptionContainer>
+        {rooms?.map(room => (
+          <SidebarOption
+            key={room.id}
+            Icon={FiberManualRecord}
+            id={room.id}
+            title={room.name}
+          />
+        ))}
+      </SidebarOptionContainer>
     </SidebarContainer>
   );
 }
@@ -118,4 +122,11 @@ const SidebarInfo = styled.div`
     margin-right: 2px;
     color: green;
   }
+`;
+
+const SidebarOptionContainer = styled.div`
+  background-color: var(--slack-color);
+  max-height: 150px;
+  overflow-y: scroll;
+  padding-bottom: 10px;
 `;

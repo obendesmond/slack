@@ -3,9 +3,11 @@ import { Button } from "@mui/material";
 import styled from "styled-components";
 import { db } from "Backend/firebase";
 import { doc, collection, addDoc, serverTimestamp } from "firebase/firestore";
+import useAuth from "hooks/useAuth";
 
 function ChatInput({ channelId, channelName, chatRef }) {
   const [input, setInput] = useState("");
+  const { currentUser } = useAuth();
 
   const sendMessage = async e => {
     e.preventDefault();
@@ -19,9 +21,8 @@ function ChatInput({ channelId, channelName, chatRef }) {
     await addDoc(colRef, {
       message: input,
       timestamp: serverTimestamp(),
-      user: "Desmond Oben",
-      userImage:
-        "https://media-exp1.licdn.com/dms/image/C4D03AQFH8W6G3HIwWw/profile-displayphoto-shrink_800_800/0/1639987599445?e=1652313600&v=beta&t=io2Up2QwK9pdOQkuzVzfqx6e6J83YojDEiiJh8OzbRA",
+      user: currentUser?.displayName,
+      userImage: currentUser?.photoURL,
     });
 
     chatRef?.current?.scrollIntoView({ behavior: "smooth" });
