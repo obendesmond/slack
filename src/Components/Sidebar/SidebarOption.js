@@ -1,22 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { db } from "Backend/firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useDispatch } from "react-redux";
 import { enterRoom } from "features/appSlice";
+import ChannelDialog from "./ChannelDialog";
 
 export default function SidebarOption({ Icon, title, addChannelOption, id }) {
+  const [open, setOpen] = useState(false);
+  const [channelInput, setChannelInput] = useState("");
   const dispatch = useDispatch();
   const roomName = "rooms";
 
-  const addChannel = async () => {
-    const channelName = prompt("Please enter the channel name");
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-    if (channelName) {
+  const addChannel = async () => {
+    setOpen(true);
+
+    if (channelInput) {
       await addDoc(collection(db, roomName), {
-        name: channelName,
+        name: channelInput,
         timestamp: serverTimestamp(),
       });
+      setOpen(false);
+      setChannelInput("");
     }
   };
 
@@ -27,18 +36,27 @@ export default function SidebarOption({ Icon, title, addChannelOption, id }) {
   };
 
   return (
-    <SidebarOptionContainer
-      onClick={addChannelOption ? addChannel : selectChannel}
-    >
-      {Icon && <Icon style={{ padding: 10 }} />}
-      {Icon ? (
-        <h3>{title}</h3>
-      ) : (
-        <SidebarOptionChannel>
-          <span>#</span> &nbsp; {title}
-        </SidebarOptionChannel>
-      )}
-    </SidebarOptionContainer>
+    <>
+      <SidebarOptionContainer
+        onClick={addChannelOption ? addChannel : selectChannel}
+      >
+        {Icon && <Icon style={{ padding: 10 }} />}
+        {Icon ? (
+          <h3>{title}</h3>
+        ) : (
+          <SidebarOptionChannel>
+            <span>#</span> &nbsp; {title}
+          </SidebarOptionChannel>
+        )}
+      </SidebarOptionContainer>
+      <ChannelDialog
+        channelInput={channelInput}
+        setChannelInput={setChannelInput}
+        open={open}
+        handleAddChannel={addChannel}
+        handleClose={handleClose}
+      />
+    </>
   );
 }
 
