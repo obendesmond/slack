@@ -1,19 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { InfoOutlined, StarBorderOutlined } from "@mui/icons-material";
 import { useSelector } from "react-redux";
 import { selectRoomId } from "features/appSlice";
 import ChatInput from "./ChatInput";
 import getDocument from "Backend/getDocument";
+import getAllDocuments from "Backend/getAllDocuments";
+import Message from "./Message";
 
 function Chat() {
+  const chatRef = useRef(null);
   const roomId = useSelector(selectRoomId);
   const [roomDetails, setRoomDetails] = useState(null);
   const [roomMessages, setRoomMessages] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getDocument(roomId, "rooms", setRoomDetails);
-  }, [roomId]);
+    chatRef?.current?.scrollIntoView({ behavior: "smooth" });
+    getDocument(roomId, "rooms", setRoomDetails, setLoading);
+    getAllDocuments(
+      `rooms/${roomId}/messages`,
+      setRoomMessages,
+      {
+        name: "timestamp",
+        value: "asc",
+      },
+      setLoading
+    );
+  }, [roomId, loading]);
 
   return (
     <ChatContainer>
@@ -35,9 +49,24 @@ function Chat() {
           </Header>
 
           {/* chat messages */}
-          <ChatMessages>{/* TODO:list out the messages */}</ChatMessages>
+          <ChatMessages>
+            {roomMessages?.map(rm => (
+              <Message
+                key={rm.id}
+                message={rm.message}
+                timestamp={rm.timestamp}
+                user={rm.user}
+                userImage={rm.userImage}
+              />
+            ))}
+            <ChatBottom ref={chatRef} />
+          </ChatMessages>
 
-          <ChatInput channelName={roomDetails?.name} channelId={roomId} />
+          <ChatInput
+            chatRef={chatRef}
+            channelName={roomDetails?.name}
+            channelId={roomId}
+          />
         </>
       )}
 
@@ -101,4 +130,8 @@ const NoRoomSelected = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+`;
+
+const ChatBottom = styled.div`
+  padding-bottom: 200px;
 `;

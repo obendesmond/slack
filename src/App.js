@@ -10,12 +10,12 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <ApBody>
+      <AppBody>
         <Sidebar />
         <Routes>
           <Route path="/" exact element={<Chat />} />
         </Routes>
-      </ApBody>
+      </AppBody>
     </div>
   );
 }

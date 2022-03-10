@@ -1,7 +1,12 @@
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "Backend/firebase";
 
-const getDocument = async (docId, collectionName, setRoomDetails) => {
+const getDocument = async (
+  docId,
+  collectionName,
+  setRoomDetails,
+  setLoading
+) => {
   if (docId) {
     const docRef = doc(db, collectionName || "rooms", docId);
     const docSnap = await getDoc(docRef);

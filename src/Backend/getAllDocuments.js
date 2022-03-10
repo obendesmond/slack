@@ -1,7 +1,12 @@
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "Backend/firebase";
 
-const getAllDocuments = (collectionName, setItems, orderOptions) => {
+const getAllDocuments = (
+  collectionName,
+  setItems,
+  orderOptions,
+  setLoading
+) => {
   const q = query(
     collection(db, collectionName),
     orderBy(orderOptions.name, orderOptions.value) //e.g orderBy("name","asc")
@@ -13,7 +18,7 @@ const getAllDocuments = (collectionName, setItems, orderOptions) => {
       postArray.push({ ...doc.data(), id: doc.id });
     });
     setItems(postArray);
-    // console.log("Array: ", postArray);
+    // console.log("Messages: ", postArray);
   });
 
   return () => unsub();
